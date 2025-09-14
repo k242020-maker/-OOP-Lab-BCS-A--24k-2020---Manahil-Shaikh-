@@ -1,24 +1,32 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
-int main() {
-    int n;
-    cout << "Enter number of rows: ";
-    cin >> n;
-
-    for (int i = 1; i <= n; i++) {
-        for (int s = 0; s < n - i; s++) cout << " ";
-        for (int j = 0; j < i; j++) cout << char('A' + j);
-        for (int j = i - 2; j >= 0; j--) cout << char('A' + j);
-        cout << endl;
+void FirstAndLastIndex(string str, char ch, int *first, int *last){
+    *first = -1;
+    *last = -1;
+    for(int i = 0; i < str.length(); i++){
+        if(str[i] == ch){
+            if(*first == -1)
+                *first = i;
+            *last = i;
+        }
     }
+}
 
-    for (int i = n - 1; i >= 1; i--) {
-        for (int s = 0; s < n - i; s++) cout << " ";
-        for (int j = 0; j < i; j++) cout << char('A' + j);
-        for (int j = i - 2; j >= 0; j--) cout << char('A' + j);
-        cout << endl;
-    }
+int main(){
+    string strr;
+    char chh;
+    int firstindex, lastindex;
+
+    cout << "Enter a string : ";
+    cin >> strr;
+    cout << "Enter a character(you need to find) : ";
+    cin >> chh;
+
+    FirstAndLastIndex(strr, chh, &firstindex, &lastindex);
+    cout << "First occurrence at index: " << firstindex << endl;
+    cout << "Last occurrence at index: " << lastindex << endl;
 
     return 0;
 }

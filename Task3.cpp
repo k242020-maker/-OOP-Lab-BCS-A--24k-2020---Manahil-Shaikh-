@@ -1,32 +1,21 @@
 #include <iostream>
 using namespace std;
 
-bool isPrime(int num) {
-    if (num < 2) return false;
-    for (int i = 2; i * i <= num; i++) {
-        if (num % i == 0) return false;
+int sumArray(int *arr, int size){
+    int sum = 0;
+    for(int i = 0; i < size; i++){
+        sum += *(arr + i);
     }
-    return true;
+    return sum;
 }
 
-void findPrimesInRange(int start, int end) {
-    for (int i = start + 1; i < end; i++) {
-        if (isPrime(i)) {
-            cout << i << " ";
-        }
-    }
-    cout << endl;
-}
+int main(){
+    int numbers[] = {1, 2, 3, 4, 5};
+    int size = sizeof(numbers) / sizeof(numbers[0]);
+    int result;
 
-int main() {
-    int start, end;
-    cout << "Enter the start number: ";
-    cin >> start;
-    cout << "Enter the end number: ";
-    cin >> end;
-
-    cout << "Prime numbers between " << start << " and " << end << " are:" << endl;
-    findPrimesInRange(start, end);
+    result = sumArray(numbers, size);
+    cout << "Sum of array elements are : " << result << endl;
 
     return 0;
 }
